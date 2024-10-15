@@ -1,24 +1,20 @@
 name: flutter_sdl_gamepad
-description: "A new Flutter FFI plugin project."
-version: 0.0.1
-homepage:
+description: A Flutter wrapper around package:sdl_gamepad
+version: 1.0.0
+repository: https://github.com/BinghamtonRover/flutter_sdl_gamepad
 
 environment:
-  sdk: ^3.5.3
+  sdk: ^3.5.0
   flutter: '>=3.3.0'
 
 dependencies:
   flutter:
     sdk: flutter
-  plugin_platform_interface: ^2.0.2
   sdl_gamepad: ^1.0.2
 
 dev_dependencies:
-  ffi: ^2.1.0
-  ffigen: ^11.0.0
   flutter_test:
     sdk: flutter
-  flutter_lints: ^4.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -50,6 +46,7 @@ flutter:
       windows:
         ffiPlugin: true
         dartPluginClass: FlutterSdlGamepad
+      # MacOS support needs to be tested
     # -------------------
 
   # To add assets to your plugin package, add an assets section, like this:
