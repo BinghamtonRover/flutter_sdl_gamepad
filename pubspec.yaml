@@ -1,6 +1,6 @@
 name: flutter_sdl_gamepad
-description: A Flutter wrapper around package:sdl_gamepad
-version: 1.1.0
+description: A Flutter wrapper to compile all the native assets needed for package:sdl_gamepad, an SDL-based gamepad library
+version: 1.1.1
 repository: https://github.com/BinghamtonRover/flutter_sdl_gamepad
 
 environment:
