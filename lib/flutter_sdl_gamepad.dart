@@ -2,9 +2,11 @@ import "dart:io";
 import "dart:ffi";
 
 import "package:sdl3/sdl3.dart" as sdl;
-import "package:sdl_gamepad/sdl_gamepad.dart";
 
-export "package:sdl_gamepad/sdl_gamepad.dart";
+// For some reason, Pub thinks SdlGuid not being documented is our fault
+import "package:sdl_gamepad/sdl_gamepad.dart" hide SdlGuid;
+
+export "package:sdl_gamepad/sdl_gamepad.dart" hide SdlGuid;
 
 /// The wrapper plugin. Use [SdlGamepad] directly.
 class FlutterSdlGamepad {
