@@ -1,3 +1,7 @@
+## 1.1.1
+
+- Fix Pub score issues
+
 ## 1.1.0
 
 - Added MacOS support
