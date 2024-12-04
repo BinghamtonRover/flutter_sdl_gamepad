@@ -46,12 +46,11 @@ class GamepadPageState extends State<GamepadPage> {
     final gamepads = SdlGamepad.getConnectedGamepadIds();
     for (final gamepadId in gamepads) {
       final info = SdlGamepad.getInfoForGamepadId(gamepadId);
-      final message =
-        "  Name: ${info.name}\n"
-        "  Gamepad type: ${info.type}\n";
+      final message = "  Name: ${info.name}\n"
+          "  Gamepad type: ${info.type}\n";
       gamepadInfo[gamepadId] = message;
     }
-    setState(() { });
+    setState(() {});
   }
 
   void refreshState(_) {
@@ -70,76 +69,100 @@ class GamepadPageState extends State<GamepadPage> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-    body: Row(
-      children: [
-        Expanded(
-          child: Column(  // list of gamepads
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              if (error != null)
-                Text(error!, style: const TextStyle(color: Colors.red)),
-              const SizedBox(height: 12),
-              FilledButton.icon(
-                label: const Text("Refresh"),
-                icon: const Icon(Icons.refresh),
-                onPressed: checkGamepads,
+        body: Row(
+          children: [
+            Expanded(
+              child: Column(
+                // list of gamepads
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  if (error != null)
+                    Text(error!, style: const TextStyle(color: Colors.red)),
+                  const SizedBox(height: 12),
+                  FilledButton.icon(
+                    label: const Text("Refresh"),
+                    icon: const Icon(Icons.refresh),
+                    onPressed: checkGamepads,
+                  ),
+                  const SizedBox(height: 12),
+                  if (gamepadInfo.isEmpty)
+                    const Text("There are no gamepads connected"),
+                  for (final entry in gamepadInfo.entries)
+                    ListTile(
+                      title: Text("Gamepad: ${entry.key}"),
+                      subtitle: Text(entry.value),
+                      onTap: () => selectGamepad(entry.key),
+                    ),
+                ],
               ),
-              const SizedBox(height: 12),
-              if (gamepadInfo.isEmpty)
-                const Text("There are no gamepads connected"),
-              for (final entry in gamepadInfo.entries) ListTile(
-                title: Text("Gamepad: ${entry.key}"),
-                subtitle: Text(entry.value),
-                onTap: () => selectGamepad(entry.key),
+            ),
+            if (state == null)
+              const Expanded(
+                child: Text("Choose a gamepad"),
+              )
+            else ...[
+              Expanded(
+                child: Thumbstick(
+                  label: "Left joystick",
+                  x: state!.normalLeftJoystickX,
+                  y: state!.normalLeftJoystickY,
+                ),
+              ),
+              Expanded(
+                child: Thumbstick(
+                  label: "Right joystick",
+                  x: state!.normalRightJoystickX,
+                  y: state!.normalRightJoystickY,
+                ),
               ),
             ],
-          ),
+          ],
         ),
-        if (state == null)
-          const Expanded(child: Text("Choose a gamepad"))
-        else ...[
-          Expanded(child: Thumbstick(label: "Left joystick", x: state!.normalLeftJoystickX, y: state!.normalLeftJoystickY)),
-          Expanded(child: Thumbstick(label: "Right joystick", x: state!.normalRightJoystickX, y: state!.normalRightJoystickY)),
-        ],
-      ],
-    ),
-  );
+      );
 }
 
 class Thumbstick extends StatelessWidget {
   final double x;
   final double y;
   final String label;
-  const Thumbstick({required this.x, required this.y, required this.label, super.key});
+  const Thumbstick({
+    required this.x,
+    required this.y,
+    required this.label,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) => Column(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-      Text(label, style: Theme.of(context).textTheme.headlineSmall),
-      const SizedBox(height: 12),
-      Container(
-        width: 50,
-        height: 50,
-        decoration: const ShapeDecoration(
-          shape: CircleBorder(
-            side: BorderSide(color: Colors.black),
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            label,
+            style: Theme.of(context).textTheme.headlineSmall,
           ),
-        ),
-        child: Align(
-          alignment: Alignment(x, y),
-          child: const SizedBox(
-            width: 25,
-            height: 25,
-            child: DecoratedBox(
-              decoration: ShapeDecoration(
-                shape: CircleBorder(),
-                color: Colors.blue,
+          const SizedBox(height: 12),
+          Container(
+            width: 50,
+            height: 50,
+            decoration: const ShapeDecoration(
+              shape: CircleBorder(
+                side: BorderSide(color: Colors.black),
+              ),
+            ),
+            child: Align(
+              alignment: Alignment(x, y),
+              child: const SizedBox(
+                width: 25,
+                height: 25,
+                child: DecoratedBox(
+                  decoration: ShapeDecoration(
+                    shape: CircleBorder(),
+                    color: Colors.blue,
+                  ),
+                ),
               ),
             ),
           ),
-        ),
-      ),
-    ],
-  );
+        ],
+      );
 }
