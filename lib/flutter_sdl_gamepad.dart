@@ -10,7 +10,7 @@ export "package:sdl_gamepad/sdl_gamepad.dart";
 class FlutterSdlGamepad {
   /// Flutter will call this method on launch. On Mac, loads the dylib needed by SDL3.
   static void registerWith() {
-    if (Platform.isMacOS){
+    if (Platform.isMacOS) {
       final path = Platform.environment["SDLGAMEPAD_PATH"];
       final lib = DynamicLibrary.open(path!);
       sdl.SdlDynamicLibraryService().add("SDL3", lib);
