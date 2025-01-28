@@ -1,3 +1,7 @@
+## 1.1.2
+
+- Fix MacOS build by restoring symbolic links in the Frameworks folder
+
 ## 1.1.1
 
 - Fix Pub score issues
