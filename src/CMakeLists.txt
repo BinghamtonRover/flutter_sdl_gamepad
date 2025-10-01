@@ -5,4 +5,4 @@ cmake_minimum_required(VERSION 3.10)
 
 project(flutter_sdl_gamepad_library VERSION 0.0.1 LANGUAGES C)
 
-add_subdirectory("sdl")
+add_subdirectory("sdl3")
