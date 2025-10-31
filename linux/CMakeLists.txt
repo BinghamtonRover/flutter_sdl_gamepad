@@ -11,6 +11,11 @@ project(${PROJECT_NAME} LANGUAGES CXX)
 # This can be changed to accommodate different builds.
 add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/../src" "${CMAKE_CURRENT_BINARY_DIR}/shared")
 
+# We don't want a suffix on the .so file
+set_target_properties(SDL3-shared PROPERTIES
+  NO_SONAME TRUE
+)
+
 # List of absolute paths to libraries that should be bundled with the plugin.
 # This list could contain prebuilt libraries, or libraries created by an
 # external build triggered from this build file.
