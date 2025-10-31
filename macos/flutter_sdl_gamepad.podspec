@@ -36,8 +36,9 @@ A new Flutter FFI plugin project.
   # Set the header and framework search paths
   s.pod_target_xcconfig = {
     'FRAMEWORK_SEARCH_PATHS' => '"$(inherited)" "$(PODS_TARGET_SRCROOT)/Frameworks"',
-    'HEADER_SEARCH_PATHS' => '"$(inherited)" "$(PODS_TARGET_SRCROOT)/Frameworks/SDL3.framework/Headers"',
+    'HEADER_SEARCH_PATHS' => '"$(inherited)" "$(PODS_TARGET_SRCROOT)/Frameworks/SDL3.framework/Headers" "$(HOMEBREW_PREFIX)/include"',
     'OTHER_LDFLAGS' => '$(inherited) -framework SDL3',
+    'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) SDL_OPENGL=0 SDL_OPENGLES=0',
     'DEFINES_MODULE' => 'YES'
   }
 
