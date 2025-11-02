@@ -9,7 +9,7 @@ project(${PROJECT_NAME} LANGUAGES CXX)
 
 # Invoke the build for native code shared with the other target platforms.
 # This can be changed to accommodate different builds.
-add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/../src" "${CMAKE_CURRENT_BINARY_DIR}/shared")
+add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/../third_party" "${CMAKE_CURRENT_BINARY_DIR}/shared")
 
 # We don't want a suffix on the .so file
 set_target_properties(SDL3-shared PROPERTIES
