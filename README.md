@@ -1,17 +1,9 @@
+# flutter_sdl_gamepad
 
-Simple DirectMedia Layer (SDL for short) is a cross-platform library
-designed to make it easy to write multi-media software, such as games
-and emulators.
+A Flutter wrapper to compile all the libraries needed by [package:sdl_gamepad](https://pub.dev/packages/sdl_gamepad).
 
-You can find the latest release and additional information at:
-https://www.libsdl.org/
+This library is needed as the SDL binaries are not included with `package:sdl_gamepad`, at least
+not until the Native Assets feature is released. This package simply exports it and instructs the
+Flutter tooling to compile and build SDL3's native code.
 
-Installation instructions and a quick introduction is available in
-[INSTALL.md](INSTALL.md)
-
-This library is distributed under the terms of the zlib license,
-available in [LICENSE.txt](LICENSE.txt).
-
-Enjoy!
-
-Sam Lantinga (slouken@libsdl.org)
+This package is supported and tested on Windows, Linux, and MacOS.
