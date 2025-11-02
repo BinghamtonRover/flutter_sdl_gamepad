@@ -19,10 +19,10 @@ A new Flutter FFI plugin project.
   # `../src/*` so that the C sources can be shared among all target platforms.
   s.source           = { :path => '.' }
   s.dependency 'FlutterMacOS'
-  s.public_header_files = 'Classes/**/*.h', 'Frameworks/SDL3.framework/Headers/**/*.h'
+  s.public_header_files = 'Classes/**/*.h', 'Frameworks/SDL3.framework/Headers/*.h'
 
   # tells cocoapods to include sdl3framework in the pod
-  s.source_files     = 'Classes/**/*.{h,c,cc,cpp,swift}', '../../src/**/*.{h,c,cc,cpp}'
+  s.source_files     = 'Classes/**/*.{h,c,cc,cpp,swift}'
 
   # Include the SDL3 framework
   s.vendored_frameworks = 'Frameworks/SDL3.framework'
