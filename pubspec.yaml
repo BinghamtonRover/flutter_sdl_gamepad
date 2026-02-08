@@ -10,8 +10,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  sdl_gamepad: ^1.1.1
-  sdl3: ^0.1.44
+  sdl_gamepad: ^1.1.2
+  sdl3: ^2.4.1
 
 dev_dependencies:
   very_good_analysis: ^6.0.0
